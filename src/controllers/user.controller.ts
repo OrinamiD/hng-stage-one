@@ -33,7 +33,7 @@ export const fetchUser = async (req: Request, res: Response) => {
         name: userDetails.name,
         stack: userDetails.stack,
       },
-      timeStamp: new Date().toISOString(),
+      timestamp: new Date().toISOString(),
       fact: catFact,
     });
   } catch (error: any) {
