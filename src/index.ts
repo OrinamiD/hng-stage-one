@@ -27,6 +27,7 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+app.use(limiter);
 // catch JSON syntax errors
 app.use(
   (
