@@ -48,7 +48,7 @@ Returns your profile information and a random cat fact.
     "email": "dongoorinami@gmail.com",
     "stack": "Node.js/Express"
   },
-  "timeStamp": "2025-10-19T10:00:00.000Z",
+  "timestamp": "2025-10-19T10:00:00.000Z",
   "fact": "Cats sleep for 70% of their lives."
 }
 ```
