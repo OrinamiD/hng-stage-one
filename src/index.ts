@@ -16,18 +16,16 @@ app.use(helmet());
 
 app.use(cors());
 
-app.use(
-  rateLimit({
-    windowMs: 60 * 1000, // 1 minute (60,000 ms)
-    max: 5, // each IP to 5 requests
-    message: {
-      success: false,
-      message: "Too many requests, please try again after a minute.",
-    },
-    standardHeaders: true,
-    legacyHeaders: false,
-  })
-);
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes (in milliseconds)
+  max: 50, // 50 requests per window
+  message: {
+    success: false,
+    message: "Too many requests, please try again after 15 minutes.",
+  },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 // catch JSON syntax errors
 app.use(
