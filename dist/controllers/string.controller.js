@@ -1,7 +1,6 @@
 import {} from "express";
 import { deleteByValue, getAllStringsService, parseNaturalLanguageQuery, stringToAnalyze, } from "../services/strings.service.js";
 import StringModel from "../models/string.model.js";
-import axios from "axios";
 // Create and analyze strings
 export const analyzeString = async (req, res) => {
     try {
@@ -126,42 +125,40 @@ export const deleteString = async (req, res) => {
         return res.status(500).json({ error: err.message || "Server error" });
     }
 };
-export const userDetails = {
-    name: "Dongo Cornelius",
-    email: "dongoorinami@gmail.com",
-    stack: "Node.js/Express",
-};
-export const fetchUser = async (req, res) => {
-    try {
-        let catFact = "Could not fetch a cat fact";
-        const response = await axios.get("https://catfact.ninja/fact", {
-            timeout: 5000,
-        });
-        if (!response) {
-            return res
-                .status(400)
-                .json({ success: false, messsage: "Incorrect URL" });
-        }
-        catFact = response.data.fact;
-        console.log(catFact);
-        return res.status(200).json({
-            status: "success",
-            user: {
-                email: userDetails.email,
-                name: userDetails.name,
-                stack: userDetails.stack,
-            },
-            timestamp: new Date().toISOString(),
-            fact: catFact,
-        });
-    }
-    catch (error) {
-        if (error.message === "Could not fetch a cat fact") {
-            return res.status(400).json({ success: false, message: error.message });
-        }
-        else {
-            return res.status(500).json({ success: false, message: error.message });
-        }
-    }
-};
+// export const userDetails = {
+//   name: "Dongo Cornelius",
+//   email: "dongoorinami@gmail.com",
+//   stack: "Node.js/Express",
+// };
+// export const fetchUser = async (req: Request, res: Response) => {
+//   try {
+//     let catFact = "Could not fetch a cat fact";
+//     const response = await axios.get("https://catfact.ninja/fact", {
+//       timeout: 5000,
+//     });
+//     if (!response) {
+//       return res
+//         .status(400)
+//         .json({ success: false, messsage: "Incorrect URL" });
+//     }
+//     catFact = response.data.fact;
+//     console.log(catFact);
+//     return res.status(200).json({
+//       status: "success",
+//       user: {
+//         email: userDetails.email,
+//         name: userDetails.name,
+//         stack: userDetails.stack,
+//       },
+//       timestamp: new Date().toISOString(),
+//       fact: catFact,
+//     });
+//   } catch (error: any) {
+//     if (error.message === "Could not fetch a cat fact") {
+//       return res.status(400).json({ success: false, message: error.message });
+//     } else {
+//       return res.status(500).json({ success: false, message: error.message });
+//     }
+//   }
+// };
 //# sourceMappingURL=string.controller.js.map
