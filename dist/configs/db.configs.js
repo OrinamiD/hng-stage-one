@@ -5,7 +5,7 @@ export const port = `${process.env.PORT}` || 5000;
 export const connectedDb = async () => {
     try {
         await mongoose.connect(`${process.env.MONGODB_URL}`).then(() => {
-            console.log(`MongoDb connected scuccessfully...`);
+            console.log(`MongoDb connected successfully...`);
         });
     }
     catch (error) {

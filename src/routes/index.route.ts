@@ -1,9 +1,19 @@
-import { Router } from "express";
+import express, { Router } from "express";
 
-import userRoutes from "./user.route.js";
+const router: Router = express.Router();
 
-const router: Router = Router();
+import stringRoute from "./string.route.js";
 
-router.use("/user-cat", userRoutes);
+router.use("/analyze", stringRoute);
 
 export default router;
+
+// import { Router } from "express";
+
+// import userRoutes from "./user.route.js";
+
+// const router: Router = Router();
+
+// router.use("/user-cat", userRoutes);
+
+// export default router;
